@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 
 const Navbar = () => {
-  const { user, setUser, signOutUser } = use(AuthContext);
+  const { user, setUser, signOutUser, loading } = use(AuthContext);
 
   const handleSignOut = () => {
     Swal.fire({
@@ -32,7 +32,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar bg-base-100 shadow-sm mb-10 sticky top-0 z-50">
+    <div className="navbar bg-base-100 shadow-sm mb-15 sticky top-0 z-50">
       <Link to={`/`} className="flex-1 flex items-center gap-1">
         <img className="w-10" src="https://i.ibb.co/Kxwb7rqF/img-icons8.png" alt="logo" />
         <h3 className="font-semibold text-lg hidden sm:block">Habit Tracker</h3>
@@ -43,7 +43,7 @@ const Navbar = () => {
         <NavLink to={`/my-habits`}>My-Habits</NavLink>
         <NavLink to={`/add-habit`}>Add-Habit</NavLink>
         <div className="dropdown dropdown-end">
-          {!user ? (
+          { loading ? <span className="loading loading-spinner loading-5xl"></span> : (!user) ? (
             <div className="flex gap-1">
               <Link className="btn" to={`/login`}>
                 LogIn

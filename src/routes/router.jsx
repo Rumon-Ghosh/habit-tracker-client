@@ -7,6 +7,7 @@ import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import AddHabit from "../pages/AddHabits/AddHabit";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 export const router = createBrowserRouter([
   {
@@ -15,7 +16,9 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home></Home>
+        element: <Home></Home>,
+        loader: () => fetch('http://localhost:3000/latest-habits'),
+        hydrateFallbackElement: <LoadingSpinner></LoadingSpinner>
       },
       {
         path: '/all-habits',

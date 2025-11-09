@@ -1,20 +1,51 @@
-import React, { use } from "react";
+import React, { use, useRef } from "react";
 import { AuthContext } from "../../AuthContext/AuthContext";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router";
 
 const AddHabit = () => {
   const { user } = use(AuthContext)
+  const isPublicRef = useRef();
+  const navigate = useNavigate()
 
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log(formData);
-  // };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const newHabit = {
+      title: form.title.value,
+      description: form.description.value,
+      image: form.image.value,
+      category: form.category.value,
+      reminderTime: form.reminderTime.value,
+      userName: form.userName.value,
+      userEmail: form.userEmail.value,
+      isPublic: isPublicRef.current.checked,
+    }
+    // console.log(newHabit)
+   fetch('http://localhost:3000/habits', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newHabit)
+    })
+     .then(result => result.json())
+     .then(data => {
+       if (data.insertedId) {
+         toast.success("Habit Added Successfully");
+         form.reset();
+         navigate('/')
+       }
+     })
+      .catch(err => toast.error(`Error: ${err.message}`))
+  };
 
   return (
     <div className="max-w-3xl mx-auto p-6 bg-base-200 rounded-xl shadow-md my-8">
       <h2 className="text-3xl font-bold mb-6 text-center">Add New Habit</h2>
 
-      <form onSubmit={``} className="grid grid-cols-1 gap-5">
+      <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-5">
         
         {/* Title */}
         <div className="form-control">
@@ -66,12 +97,12 @@ const AddHabit = () => {
             className="select select-bordered w-full"
             required
           >
-            <option disabled selected>Select category</option>
-            <option value={`morning`}>Morning</option>
-            <option value={`work`}>Work</option>
-            <option value={`fitness`}>Fitness</option>
-            <option value={`evening`}>Evening</option>
-            <option value={`study`}>Study</option>
+            <option disabled value="none" selected>Select category</option>
+            <option value="morning">Morning</option>
+            <option value="work">Work</option>
+            <option value="fitness">Fitness</option>
+            <option value="evening">Evening</option>
+            <option value="study">Study</option>
           </select>
         </div>
 
@@ -95,6 +126,7 @@ const AddHabit = () => {
           </label>
           <input
             type="text"
+            name="userName"
             defaultValue={user?.displayName}
             readOnly
             className="input input-bordered bg-gray-100"
@@ -108,6 +140,7 @@ const AddHabit = () => {
           </label>
           <input
             type="text"
+            name="userEmail"
             defaultValue={user?.email}
             readOnly
             className="input input-bordered bg-gray-100"
@@ -121,7 +154,7 @@ const AddHabit = () => {
               type="checkbox" 
               className="checkbox checkbox-primary"
               defaultChecked={true}
-              name="isPublic"
+              ref={isPublicRef}
             />
             <span className="label-text font-medium">Make this habit Public</span>
           </label>
