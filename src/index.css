@@ -1,0 +1,6 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+.nav a.active {
+  @apply bg-purple-400 text-white font-medium rounded-md px-2 py-1;
+}
