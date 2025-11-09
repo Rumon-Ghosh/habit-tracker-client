@@ -33,10 +33,10 @@ const Navbar = () => {
 
   return (
     <div className="navbar bg-base-100 shadow-sm mb-10 sticky top-0 z-50">
-      <div className="flex-1 hidden md:flex items-center gap-1">
+      <Link to={`/`} className="flex-1 flex items-center gap-1">
         <img className="w-10" src="https://i.ibb.co/Kxwb7rqF/img-icons8.png" alt="logo" />
-        <h3 className="font-semibold text-lg">Habit Tracker</h3>
-      </div>
+        <h3 className="font-semibold text-lg hidden sm:block">Habit Tracker</h3>
+      </Link>
       <div className="flex gap-2 md:gap-4 items-center nav">
         <NavLink to={`/`}>Home</NavLink>
         <NavLink to={`/all-habits`}>Habits</NavLink>
