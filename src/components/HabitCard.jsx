@@ -1,11 +1,18 @@
 import React from "react";
 import { Link } from "react-router";
 import { FaUserAlt } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const HabitCard = ({ habit }) => {
 
   return (
-    <div className="card bg-white shadow-lg border border-purple-200 hover:shadow-xl transition p-3">
+    <motion.div
+      className="card bg-white shadow-lg border border-purple-200 hover:shadow-xl transition p-3"
+      initial={{ opacity: 0, y: 40 }}    
+      whileInView={{ opacity: 1, y: 0 }}   
+      viewport={{ once: true, amount: 0.1 }} 
+      transition={{ duration: 0.5, ease: "linear" }}
+    >
 
       <figure>
         <img
@@ -43,7 +50,7 @@ const HabitCard = ({ habit }) => {
           </Link>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
