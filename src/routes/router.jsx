@@ -8,6 +8,7 @@ import Register from "../pages/Register/Register";
 import AddHabit from "../pages/AddHabits/AddHabit";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import LoadingSpinner from "../components/LoadingSpinner";
+import HabitDetails from "../pages/HabitsDetails/HabitDetails";
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +24,12 @@ export const router = createBrowserRouter([
       {
         path: '/all-habits',
         element: <AllHabits></AllHabits>
+      },
+      {
+        path: '/habit/:id',
+        element: <PrivateRoute>
+          <HabitDetails></HabitDetails>
+        </PrivateRoute>
       },
       {
         path: '/my-habits',

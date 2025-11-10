@@ -21,7 +21,8 @@ const MyHabits = () => {
       .then((data) => {
         setMyHabits(data);
         setLoading(false);
-      });
+      })
+    .catch(er => toast.error('Something went wrong', er.message))
   }, [user, refetch]);
 
   // handleUpdate
@@ -51,10 +52,27 @@ const MyHabits = () => {
         if (data.modifiedCount) toast.success("Habit updated successfully!");
         habitModelRef.current.close();
         setRefetch(!refetch);
-        habitModelRef.close();
+        // habitModelRef.close();
       })
       .catch((error) => toast.error(`Update failed: ${error.message}`));
   };
+
+  const updateStreak = (id) => {
+    fetch(`http://localhost:3000/habits/${id}/complete`, {
+      method: "PATCH"
+    })
+    .then(res => res.json())
+      .then(data => {
+        if (data.modifiedCount) {
+          toast.success("Completed today streak!")
+          setRefetch(!refetch)
+        }
+        if (data.message) {
+          toast.error("Already completed today")
+        }
+      })
+    .catch(err => toast.error('Something went wrong.', err.message))
+  }
 
   // handleDelete
   const handleDeleteHabit = (id) => {
@@ -112,7 +130,7 @@ const MyHabits = () => {
             <thead className="bg-purple-600 text-white">
               <tr>
                 <th className="py-3">Title</th>
-                <th>Category</th>
+                <th className="hidden sm:block">Category</th>
                 <th>Streak</th>
                 <th className="hidden sm:block">Created Date</th>
                 <th className="text-center">Actions</th>
@@ -127,7 +145,7 @@ const MyHabits = () => {
                       {habit?.title}
                     </td>
 
-                    <td>{habit?.category}</td>
+                    <td className="hidden sm:block">{habit?.category}</td>
 
                     <td className="font-medium text-green-600">
                       {habit?.completionHistory.length} Days
@@ -295,7 +313,9 @@ const MyHabits = () => {
                           Delete
                         </button>
 
-                        <button className="btn btn-xs bg-green-500 text-white hover:bg-green-600">
+                        <button
+                          onClick={() => updateStreak(habit?._id)}
+                          className="btn btn-xs bg-green-500 text-white hover:bg-green-600">
                           Complete
                         </button>
                       </div>
@@ -308,8 +328,8 @@ const MyHabits = () => {
                     colSpan="5"
                     className="text-center py-6 text-purple-600 text-lg"
                   >
-                    You don't have any habits yet. Please add one to stay
-                    motivated!
+                    You don't have any habits yet. Please add habits to stay
+                    motivated and get progress!
                   </td>
                 </tr>
               )}

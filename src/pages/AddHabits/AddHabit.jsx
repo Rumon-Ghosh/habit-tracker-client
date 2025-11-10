@@ -103,6 +103,7 @@ const AddHabit = () => {
             <option value="Fitness">Fitness</option>
             <option value="Evening">Evening</option>
             <option value="Study">Study</option>
+            <option value="Playing">Playing</option>
           </select>
         </div>
 
