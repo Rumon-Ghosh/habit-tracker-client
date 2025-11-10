@@ -38,8 +38,8 @@ const Navbar = () => {
         <h3 className="font-semibold text-lg hidden sm:block">Habit Tracker</h3>
       </Link>
       <div className="flex gap-2 md:gap-4 items-center nav">
-        <NavLink to={`/`}>Home</NavLink>
-        <NavLink to={`/all-habits`}>Habits</NavLink>
+        <NavLink className="hidden sm:block " to={`/`}>Home</NavLink>
+        <NavLink to={`/all-habits`}>Public-Habits</NavLink>
         <NavLink to={`/my-habits`}>My-Habits</NavLink>
         <NavLink to={`/add-habit`}>Add-Habit</NavLink>
         <div className="dropdown dropdown-end">

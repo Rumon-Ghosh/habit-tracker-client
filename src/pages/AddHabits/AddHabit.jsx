@@ -97,12 +97,12 @@ const AddHabit = () => {
             className="select select-bordered w-full"
             required
           >
-            <option disabled value="none" selected>Select category</option>
-            <option value="morning">Morning</option>
-            <option value="work">Work</option>
-            <option value="fitness">Fitness</option>
-            <option value="evening">Evening</option>
-            <option value="study">Study</option>
+            <option disabled selected>Select category</option>
+            <option value="Morning">Morning</option>
+            <option value="Work">Work</option>
+            <option value="Fitness">Fitness</option>
+            <option value="Evening">Evening</option>
+            <option value="Study">Study</option>
           </select>
         </div>
 
