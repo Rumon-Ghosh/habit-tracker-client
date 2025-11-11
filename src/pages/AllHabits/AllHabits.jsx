@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import HabitCard from "../../components/HabitCard";
 import LoadingSpinner from "../../components/LoadingSpinner";
+import toast from "react-hot-toast";
 
 const AllHabits = () => {
   const [habits, setHabits] = useState([]);
@@ -14,7 +15,10 @@ const AllHabits = () => {
         setHabits(data);
         setLoading(false);
       })
-      .catch(() => setLoading(false));
+      .catch(() => {
+        toast.error("Something went wrong")
+        setLoading(false)
+      });
   }, []);
 
   const handleSearch = (e) => {
@@ -27,7 +31,8 @@ const AllHabits = () => {
       .then((data) => {
         setHabits(data);
         setLoading(false);
-      });
+      })
+      .catch(err => toast.error(err.message))
   };
 
   const handleFilter = (e) => {
@@ -40,7 +45,10 @@ const AllHabits = () => {
         .then((data) => {
           setHabits(data);
           setLoading(false);
-        });
+        })
+        .catch(() => {
+          toast.error('Something went wrong')
+        })
       } else {
         setLoading(true);
         fetch("http://localhost:3000/habits")
@@ -48,7 +56,10 @@ const AllHabits = () => {
         .then((data) => {
           setHabits(data);
           setLoading(false);
-        });
+        })
+          .catch(() => {
+          toast.error('Something went wrong')
+        })
     }
   };
 

@@ -154,7 +154,7 @@ const AddHabit = () => {
             <input 
               type="checkbox" 
               className="checkbox checkbox-primary"
-              defaultChecked={true}
+              defaultChecked={false}
               ref={isPublicRef}
             />
             <span className="label-text font-medium">Make this habit Public</span>

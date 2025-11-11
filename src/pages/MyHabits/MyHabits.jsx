@@ -14,23 +14,27 @@ const MyHabits = () => {
   const [loading, setLoading] = useState(false);
   const habitModelRef = useRef(null);
   const [refetch, setRefetch] = useState(false);
+  const [isPublic, setIsPublic] = useState(selectedHabit?.isPublic || false);
 
   const streakDays = (history) => {
-    return calculateStreak(history)
-  }
+    return calculateStreak(history);
+  };
+
+  useEffect(() => {
+    setIsPublic(selectedHabit?.isPublic || false);
+}, [selectedHabit]);
 
   useEffect(() => {
     setLoading(true);
     fetch(`http://localhost:3000/my-habits/?email=${user.email}`)
-    .then((res) => res.json())
-    .then((data) => {
-      setMyHabits(data);
-      setLoading(false);
-    })
-    .catch(er => toast.error('Something went wrong', er.message))
+      .then((res) => res.json())
+      .then((data) => {
+        setMyHabits(data);
+        setLoading(false);
+      })
+      .catch((er) => toast.error("Something went wrong", er.message));
   }, [user, refetch]);
-  
-  
+
   // handleUpdate
   const handleUpdateHabit = (e, id) => {
     e.preventDefault();
@@ -44,6 +48,7 @@ const MyHabits = () => {
       reminderTime: form.reminderTime.value,
       userName: form.userName.value,
       userEmail: form.userEmail.value,
+      isPublic: isPublic,
     };
 
     fetch(`http://localhost:3000/habits/${id}`, {
@@ -55,30 +60,31 @@ const MyHabits = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.modifiedCount) toast.success("Habit updated successfully!");
-        habitModelRef.current.close();
-        setRefetch(!refetch);
-        // habitModelRef.close();
+        if (data.modifiedCount) {
+          toast.success("Habit updated successfully!");
+          habitModelRef.current.close();
+          setRefetch(!refetch);
+        };
       })
       .catch((error) => toast.error(`Update failed: ${error.message}`));
   };
 
   const updateStreak = (id) => {
     fetch(`http://localhost:3000/habits/${id}/complete`, {
-      method: "PATCH"
+      method: "PATCH",
     })
-    .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         if (data.modifiedCount) {
-          toast.success("Completed today streak!")
-          setRefetch(!refetch)
+          toast.success("Completed today streak!");
+          setRefetch(!refetch);
         }
         if (data.message) {
-          toast.error("Already completed today")
+          toast.error("Already completed today");
         }
       })
-    .catch(err => toast.error('Something went wrong.', err.message))
-  }
+      .catch((err) => toast.error("Something went wrong.", err.message));
+  };
 
   // handleDelete
   const handleDeleteHabit = (id) => {
@@ -103,7 +109,7 @@ const MyHabits = () => {
                 text: "Your file has been deleted.",
                 icon: "success",
               });
-              setRefetch(!refetch)
+              setRefetch(!refetch);
             }
           })
           .catch(() => toast.error("Error Data Not found"));
@@ -238,17 +244,16 @@ const MyHabits = () => {
                                 </label>
                                 <select
                                   name="category"
-                                  defaultValue={selectedHabit?.category}
                                   className="select select-bordered w-full"
                                   required
                                 >
-                                  <option disabled value="">Select category</option>
-                                  <option value="Morning">Morning</option>
-                                  <option value="Work">Work</option>
-                                  <option value="Fitness">Fitness</option>
-                                  <option value="Evening">Evening</option>
-                                  <option value="Study">Study</option>
-                                  <option value="Playing">Playing</option>
+                                  {/* <option value="" disabled>Select Category</option> */}
+                                  <option selected={"Morning" == selectedHabit?.category} value="Morning">Morning</option>
+                                  <option selected={"Work" == selectedHabit?.category} value="Work">Work</option>
+                                  <option selected={"Fitness" == selectedHabit?.category} value="Fitness">Fitness</option>
+                                  <option selected={"Evening" == selectedHabit?.category} value="Evening">Evening</option>
+                                  <option selected={"Study" == selectedHabit?.category} value="Study">Study</option>
+                                  <option selected={"Playing" == selectedHabit?.category} value="Playing">Playing</option>
                                 </select>
                               </div>
 
@@ -300,6 +305,21 @@ const MyHabits = () => {
                                 />
                               </div>
 
+                              {/* Public or Private */}
+                              <div className="form-control">
+                                <label className="cursor-pointer label flex justify-start gap-3">
+                                  <input
+                                    type="checkbox"
+                                    name="isPublic"
+                                    className="checkbox checkbox-primary"
+                                    checked={isPublic}
+                                    onChange={(e) => setIsPublic(e.target.checked)}
+                                  />
+                                  <span className="label-text font-medium">
+                                    Make this habit Public
+                                  </span>
+                                </label>
+                              </div>
 
                               {/* Submit Button */}
                               <button className="btn btn-primary mt-4">
@@ -323,7 +343,8 @@ const MyHabits = () => {
 
                         <button
                           onClick={() => updateStreak(habit?._id)}
-                          className="btn btn-xs bg-green-500 text-white hover:bg-green-600">
+                          className="btn btn-xs bg-green-500 text-white hover:bg-green-600"
+                        >
                           Complete
                         </button>
                       </div>
