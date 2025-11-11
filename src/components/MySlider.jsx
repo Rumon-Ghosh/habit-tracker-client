@@ -24,7 +24,7 @@ const MySlider = () => {
       scrollbar={{ draggable: true }}
       // navigation
       autoplay={{
-        delay: 3000,
+        delay: 4000,
         disableOnInteraction: false,
       }}
     >
@@ -91,7 +91,7 @@ const MySlider = () => {
           <figure>
             <img
               className="w-full object-cover"
-              src="https://i.ibb.co/rGSDpN4p/istockphoto-687810810-612x612.jpg"
+              src="https://i.ibb.co/xSTDQn41/685c2a006528aa08cdcc4f9f-67c623e5636e21dd65107c66-Reclaim-AI-Blog-Images-Habit-Loop.png"
               alt="Achieve Your Best Self"
             />
           </figure>

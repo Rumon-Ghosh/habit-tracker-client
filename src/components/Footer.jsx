@@ -5,10 +5,10 @@ import { FaXTwitter } from "react-icons/fa6";
 const Footer = () => {
   return (
     <footer className="w-full bg-base-200 text-base-content mt-5 p-10">
-      <div className="w-11/12 mx-auto grid grid-cols-2 md:grid-cols-4 gap-7 md:gap-15">
+      <div className="w-10/12 mx-auto grid grid-cols-2 md:grid-cols-4 gap-7 md:gap-15">
         <aside className="col-span-1">
           <p className="text-lg font-bold text-purple-500">Habit Tracker</p>
-          <img src="https://i.ibb.co/Kxwb7rqF/img-icons8.png" alt="Logo" />
+          <img className="w-fit" src="https://i.ibb.co/Kxwb7rqF/img-icons8.png" alt="Logo" />
         </aside>
         <nav className="flex flex-col col-span-1">
           <h6 className="footer-title">Contact</h6>
@@ -25,7 +25,8 @@ const Footer = () => {
         </nav>
         <nav className="flex flex-col gap-1 col-span-1">
           <h6 className="footer-title">Socials</h6>
-          <a className="link link-hover text-2xl">
+          <div className="grid grid-cols-2 gap-3">
+             <a className="link link-hover text-2xl">
             <FaFacebook></FaFacebook>
           </a>
           <a className="link link-hover text-2xl">
@@ -38,6 +39,7 @@ const Footer = () => {
           <a className="link link-hover text-2xl">
             <FaLinkedin></FaLinkedin>
           </a>
+          </div>
         </nav>
       </div>
     </footer>

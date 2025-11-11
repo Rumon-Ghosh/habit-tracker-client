@@ -7,10 +7,9 @@ const Banner = () => {
   return (
     <div className="w-11/12 mx-auto mb-10 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
 
-      {/* TEXT SECTION */}
       <motion.div
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
         <h1 className="text-3xl md:text-4xl text-center md:text-start font-extrabold text-purple-700 leading-tight">
@@ -20,7 +19,7 @@ const Banner = () => {
               words={["Consistency", "Clarity", "Daily Actions"]}
               loop={0}
               cursor
-              cursorStyle="|"
+              cursorStyle="_"
               typeSpeed={80}
               deleteSpeed={50}
               delaySpeed={1500}
@@ -40,8 +39,8 @@ const Banner = () => {
 
       {/* IMAGE SECTION */}
       <motion.div
-        initial={{ opacity: 0, x: 50 }}
-        animate={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         className="flex justify-center"
       >

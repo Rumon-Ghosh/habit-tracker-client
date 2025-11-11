@@ -27,7 +27,7 @@ const HabitDetails = () => {
         setHabit(data);
         setLoading(false);
       });
-  }, [id, refetch]);
+  }, [id, user, refetch]);
 
   const updateStreak = (id) => {
     fetch(`http://localhost:3000/habits/${id}/complete`, {
@@ -104,7 +104,7 @@ const HabitDetails = () => {
 
         <button
           onClick={() => updateStreak(habit?._id)}
-          className="mt-6 w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-xl text-lg font-bold shadow-md"
+          className="mt-6 w-full bg-purple-600 hover:bg-purple-700 cursor-pointer text-white py-3 rounded-xl text-lg font-bold shadow-md"
         >
           ✅ Mark Complete
         </button>
