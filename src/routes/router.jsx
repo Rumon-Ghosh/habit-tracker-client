@@ -9,6 +9,7 @@ import AddHabit from "../pages/AddHabits/AddHabit";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import LoadingSpinner from "../components/LoadingSpinner";
 import HabitDetails from "../pages/HabitsDetails/HabitDetails";
+import ErrorPage from "../ErrorPage/ErrorPage";
 
 export const router = createBrowserRouter([
   {
@@ -48,7 +49,11 @@ export const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register></Register>
-      },
+      },  
     ]
-  }
+  },
+  {
+    path: '/*',
+    element: <ErrorPage></ErrorPage>
+  },
 ])

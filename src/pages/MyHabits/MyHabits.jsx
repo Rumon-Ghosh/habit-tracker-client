@@ -5,6 +5,7 @@ import LoadingSpinner from "../../components/LoadingSpinner";
 import { Link } from "react-router";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
+import { calculateStreak } from "../../utils/habitUtils";
 
 const MyHabits = () => {
   const { user } = use(AuthContext);
@@ -14,17 +15,22 @@ const MyHabits = () => {
   const habitModelRef = useRef(null);
   const [refetch, setRefetch] = useState(false);
 
+  const streakDays = (history) => {
+    return calculateStreak(history)
+  }
+
   useEffect(() => {
     setLoading(true);
     fetch(`http://localhost:3000/my-habits/?email=${user.email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setMyHabits(data);
-        setLoading(false);
-      })
+    .then((res) => res.json())
+    .then((data) => {
+      setMyHabits(data);
+      setLoading(false);
+    })
     .catch(er => toast.error('Something went wrong', er.message))
   }, [user, refetch]);
-
+  
+  
   // handleUpdate
   const handleUpdateHabit = (e, id) => {
     e.preventDefault();
@@ -114,7 +120,7 @@ const MyHabits = () => {
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-purple-600">
         Build Better Habits, Build a Better You
       </h2>
-      <p className="text-center font-medium text-lg max-w-[750px] mx-auto mb-10">
+      <p className="text-center max-w-[750px] mx-auto mb-10">
         Discover powerful habits that transform your daily routine. From morning
         rituals to evening wind-downs, find inspiration from our community of
         growth-minded individuals.
@@ -148,7 +154,7 @@ const MyHabits = () => {
                     <td className="hidden sm:block">{habit?.category}</td>
 
                     <td className="font-medium text-green-600">
-                      {habit?.completionHistory.length} Days
+                      {streakDays(habit?.completionHistory)} Days
                     </td>
 
                     <td className="hidden sm:block">
@@ -232,16 +238,17 @@ const MyHabits = () => {
                                 </label>
                                 <select
                                   name="category"
-                                  value={selectedHabit?.category}
+                                  defaultValue={selectedHabit?.category}
                                   className="select select-bordered w-full"
                                   required
                                 >
-                                  <option disabled>Select category</option>
+                                  <option disabled value="">Select category</option>
                                   <option value="Morning">Morning</option>
                                   <option value="Work">Work</option>
                                   <option value="Fitness">Fitness</option>
                                   <option value="Evening">Evening</option>
                                   <option value="Study">Study</option>
+                                  <option value="Playing">Playing</option>
                                 </select>
                               </div>
 
@@ -292,6 +299,7 @@ const MyHabits = () => {
                                   className="input input-bordered bg-gray-100"
                                 />
                               </div>
+
 
                               {/* Submit Button */}
                               <button className="btn btn-primary mt-4">

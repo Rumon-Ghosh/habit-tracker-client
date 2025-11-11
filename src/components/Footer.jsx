@@ -23,7 +23,7 @@ const Footer = () => {
           <a className="link link-hover">Privacy policy</a>
           <a className="link link-hover">Cookie policy</a>
         </nav>
-        <nav className="flex flex-col col-span-1">
+        <nav className="flex flex-col gap-1 col-span-1">
           <h6 className="footer-title">Socials</h6>
           <a className="link link-hover text-2xl">
             <FaFacebook></FaFacebook>

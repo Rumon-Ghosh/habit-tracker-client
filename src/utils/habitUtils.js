@@ -14,7 +14,6 @@ export const calculateStreak = (history) => {
 
   const mostRecent = sorted[0].toISOString().split("T")[0];
 
-  // If last completion was not today or yesterday, streak is 0
   if (mostRecent !== todayStr && mostRecent !== yesterdayStr) return 0;
 
   let streak = 1;
