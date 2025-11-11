@@ -2,7 +2,7 @@ import { FaBrain, FaSmileBeam, FaClock, FaChartLine } from "react-icons/fa";
 
 const WhyBuildHabits = () => {
   return (
-    <div className="w-11/12 mx-auto py-6 mt-6 mb-2 rounded-2xl bg-base-200">
+    <div className="w-11/12 mx-auto py-6 mt-5 md:mt-10 mb-2 rounded-2xl bg-base-200">
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-3 text-purple-600">
         Why Build Habits?
       </h2>

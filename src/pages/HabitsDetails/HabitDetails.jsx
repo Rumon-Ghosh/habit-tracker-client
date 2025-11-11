@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { motion } from "framer-motion";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import toast from "react-hot-toast";
 import { calculateProgress, calculateStreak } from "../../utils/habitUtils";
+import { AuthContext } from "../../AuthContext/AuthContext";
 
 const HabitDetails = () => {
+  const {user} = use(AuthContext)
   const [habit, setHabit] = useState({});
   const { id } = useParams();
   const [loading, setLoading] = useState(false);
@@ -15,7 +17,11 @@ const HabitDetails = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:3000/habits/${id}`)
+    fetch(`http://localhost:3000/habits/${id}`, {
+      headers: {
+        authorization: `Bearer ${user?.accessToken}`
+      }
+    })
       .then((res) => res.json())
       .then((data) => {
         setHabit(data);

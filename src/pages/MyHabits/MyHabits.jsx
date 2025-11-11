@@ -26,7 +26,11 @@ const MyHabits = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:3000/my-habits/?email=${user.email}`)
+    fetch(`http://localhost:3000/my-habits/?email=${user.email}`, {
+      headers: {
+        authorization: `Bearer ${user?.accessToken}`
+      }
+    })
       .then((res) => res.json())
       .then((data) => {
         setMyHabits(data);
