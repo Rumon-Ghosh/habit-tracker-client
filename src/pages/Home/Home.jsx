@@ -5,6 +5,7 @@ import HowItWorks from "../../components/HowItWorks";
 import FeaturedHabits from "../../components/FeaturedHabits";
 import { useLoaderData } from "react-router";
 import HabitCard from "../../components/HabitCard";
+import Banner from "../../components/Banner";
 
 const Home = () => {
   const latestHabits = useLoaderData();
@@ -12,6 +13,7 @@ const Home = () => {
   return (
     <div>
       <div>
+        <Banner></Banner>
         <MySlider></MySlider>
         <h1 className="text-3xl md:text-4xl font-bold text-center mb-4 text-purple-600">🔥 Newest Habit Inspirations</h1>
         <p className="mb-10 text-center text-lg font-medium">See what others are building today — start your journey with fresh motivation!</p>

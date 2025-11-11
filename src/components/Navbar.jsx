@@ -38,7 +38,7 @@ const Navbar = () => {
           src="https://i.ibb.co/Kxwb7rqF/img-icons8.png"
           alt="logo"
         />
-        <h3 className="font-semibold text-lg hidden sm:block">Habit Tracker</h3>
+        <h3 className="font-semibold text-lg text-purple-500 hidden sm:block">Habit Tracker</h3>
       </Link>
       <div className="flex gap-2 md:gap-4 items-center nav">
         <NavLink to={`/`}>Home</NavLink>
