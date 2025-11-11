@@ -43,6 +43,7 @@ const AddHabit = () => {
 
   return (
     <div className="max-w-3xl mx-auto p-6 bg-base-200 rounded-xl shadow-md my-8">
+      <title>Add Your Habits</title>
       <h2 className="text-3xl font-bold mb-6 text-center">Add New Habit</h2>
 
       <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-5">

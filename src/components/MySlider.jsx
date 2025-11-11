@@ -16,7 +16,7 @@ import "swiper/css/scrollbar";
 const MySlider = () => {
   return (
     <Swiper
-      className="mb-15"
+      className="mb-12 md:mb-20"
       modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
       spaceBetween={50}
       slidesPerView={1}

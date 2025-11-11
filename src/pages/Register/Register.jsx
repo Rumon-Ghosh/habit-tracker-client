@@ -67,7 +67,7 @@ const Register = () => {
 
   return (
     <div className="flex justify-center items-center">
-      <title>Register Page</title>
+      <title>Habit Tracker - Register Page</title>
       <div className="lg:w-2/5 p-6 bg-gray-50 rounded-xl shadow-inner border border-gray-200 sticky top-4">
         <h2 className="text-2xl font-bold text-indigo-700 mb-4 text-center">
           Resister to continue !

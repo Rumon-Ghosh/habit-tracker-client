@@ -127,6 +127,7 @@ const MyHabits = () => {
   }
   return (
     <div>
+      <title>Habit Tracker-My Habits</title>
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-purple-600">
         Build Better Habits, Build a Better You
       </h2>

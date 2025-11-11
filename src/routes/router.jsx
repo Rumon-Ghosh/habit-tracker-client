@@ -9,7 +9,7 @@ import AddHabit from "../pages/AddHabits/AddHabit";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import LoadingSpinner from "../components/LoadingSpinner";
 import HabitDetails from "../pages/HabitsDetails/HabitDetails";
-import ErrorPage from "../ErrorPage/ErrorPage";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 export const router = createBrowserRouter([
   {

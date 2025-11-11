@@ -5,7 +5,7 @@ import { Link } from "react-router";
 
 const Banner = () => {
   return (
-    <div className="w-11/12 mx-auto mb-10 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+    <div className="w-11/12 mx-auto mb-8 md:mb-15 md:mt-5 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
 
       <motion.div
         initial={{ opacity: 0, y: -50 }}
@@ -37,12 +37,11 @@ const Banner = () => {
         </Link>
       </motion.div>
 
-      {/* IMAGE SECTION */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="flex justify-center"
+        className="hidden md:flex justify-center"
       >
         <img
           src="https://i.ibb.co/WW81NNLT/create-good-habits-text-red-underline-light-blue-background-69917306.webp"

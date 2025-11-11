@@ -52,6 +52,7 @@ const HabitDetails = () => {
 
   return (
     <div>
+      <title>Habit Details</title>
       <h2 className="text-2xl md:text-3xl text-center font-bold text-purple-600 mb-4">
         Build good habits that's will lead you to the next level.
       </h2>

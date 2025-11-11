@@ -69,7 +69,7 @@ const AllHabits = () => {
 
   return (
     <div className="w-11/12 mx-auto pb-10">
-      {/* Heading */}
+      <title>Browse Public Habits</title>
       <div className="text-center mb-8">
         <h1 className="text-3xl md:text-4xl font-bold text-purple-600">
           Browse Public Habits

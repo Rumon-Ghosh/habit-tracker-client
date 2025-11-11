@@ -31,7 +31,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar bg-base-100 shadow-sm mb-15 sticky top-0 z-50">
+    <div className="navbar bg-base-100 shadow-sm mb-8 md:mb-15 sticky top-0 z-50">
       <Link to={`/`} className="flex-1 flex items-center gap-1">
         <img
           className="w-10"
@@ -42,9 +42,9 @@ const Navbar = () => {
       </Link>
       <div className="flex gap-2 md:gap-4 items-center nav">
         <NavLink to={`/`}>Home</NavLink>
-        <NavLink to={`/all-habits`}>Public-Habits</NavLink>
-        <NavLink to={`/my-habits`}>My-Habits</NavLink>
-        <NavLink to={`/add-habit`}>Add-Habit</NavLink>
+        <NavLink to={`/all-habits`}>PublicHabits</NavLink>
+        <NavLink to={`/my-habits`}>MyHabits</NavLink>
+        <NavLink to={`/add-habit`}>AddHabit</NavLink>
         <div className="dropdown dropdown-end">
           {loading ? (
             <span className="loading loading-spinner loading-5xl"></span>
