@@ -2,7 +2,7 @@
 
 A modern and intuitive habit-tracking web application designed to help users build consistency, stay motivated, and achieve their personal goals through daily habits.
 
- **Live Site URL:
+ **Live Site URL: https://habit-tracker-a3358.web.app
 
 ---
 

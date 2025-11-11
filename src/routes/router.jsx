@@ -13,47 +13,56 @@ import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 export const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <RootLayout></RootLayout>,
     children: [
       {
         index: true,
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:3000/latest-habits'),
-        hydrateFallbackElement: <LoadingSpinner></LoadingSpinner>
+        loader: () =>
+          fetch("https://habit-tracker-server-chi.vercel.app/latest-habits"),
+        hydrateFallbackElement: <LoadingSpinner></LoadingSpinner>,
       },
       {
-        path: '/all-habits',
-        element: <AllHabits></AllHabits>
+        path: "/all-habits",
+        element: <AllHabits></AllHabits>,
       },
       {
-        path: '/habit/:id',
-        element: <PrivateRoute>
-          <HabitDetails></HabitDetails>
-        </PrivateRoute>
+        path: "/habit/:id",
+        element: (
+          <PrivateRoute>
+            <HabitDetails></HabitDetails>
+          </PrivateRoute>
+        ),
       },
       {
-        path: '/my-habits',
-        element: <PrivateRoute><MyHabits></MyHabits></PrivateRoute>
+        path: "/my-habits",
+        element: (
+          <PrivateRoute>
+            <MyHabits></MyHabits>
+          </PrivateRoute>
+        ),
       },
       {
-        path: '/add-habit',
-        element: <PrivateRoute>
-          <AddHabit></AddHabit>
-        </PrivateRoute>
+        path: "/add-habit",
+        element: (
+          <PrivateRoute>
+            <AddHabit></AddHabit>
+          </PrivateRoute>
+        ),
       },
       {
-        path: '/login',
-        element: <Login></Login>
+        path: "/login",
+        element: <Login></Login>,
       },
       {
-        path: '/register',
-        element: <Register></Register>
-      },  
-    ]
+        path: "/register",
+        element: <Register></Register>,
+      },
+    ],
   },
   {
-    path: '/*',
-    element: <ErrorPage></ErrorPage>
+    path: "/*",
+    element: <ErrorPage></ErrorPage>,
   },
-])
+]);

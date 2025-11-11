@@ -22,15 +22,18 @@ const MyHabits = () => {
 
   useEffect(() => {
     setIsPublic(selectedHabit?.isPublic || false);
-}, [selectedHabit]);
+  }, [selectedHabit]);
 
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:3000/my-habits/?email=${user.email}`, {
-      headers: {
-        authorization: `Bearer ${user?.accessToken}`
+    fetch(
+      `https://habit-tracker-server-chi.vercel.app/my-habits/?email=${user.email}`,
+      {
+        headers: {
+          authorization: `Bearer ${user?.accessToken}`,
+        },
       }
-    })
+    )
       .then((res) => res.json())
       .then((data) => {
         setMyHabits(data);
@@ -55,7 +58,7 @@ const MyHabits = () => {
       isPublic: isPublic,
     };
 
-    fetch(`http://localhost:3000/habits/${id}`, {
+    fetch(`https://habit-tracker-server-chi.vercel.app/habits/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -68,13 +71,13 @@ const MyHabits = () => {
           toast.success("Habit updated successfully!");
           habitModelRef.current.close();
           setRefetch(!refetch);
-        };
+        }
       })
       .catch((error) => toast.error(`Update failed: ${error.message}`));
   };
 
   const updateStreak = (id) => {
-    fetch(`http://localhost:3000/habits/${id}/complete`, {
+    fetch(`https://habit-tracker-server-chi.vercel.app/habits/${id}/complete`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -102,7 +105,7 @@ const MyHabits = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/habits/${id}`, {
+        fetch(`https://habit-tracker-server-chi.vercel.app/habits/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -253,12 +256,52 @@ const MyHabits = () => {
                                   required
                                 >
                                   {/* <option value="" disabled>Select Category</option> */}
-                                  <option selected={"Morning" == selectedHabit?.category} value="Morning">Morning</option>
-                                  <option selected={"Work" == selectedHabit?.category} value="Work">Work</option>
-                                  <option selected={"Fitness" == selectedHabit?.category} value="Fitness">Fitness</option>
-                                  <option selected={"Evening" == selectedHabit?.category} value="Evening">Evening</option>
-                                  <option selected={"Study" == selectedHabit?.category} value="Study">Study</option>
-                                  <option selected={"Playing" == selectedHabit?.category} value="Playing">Playing</option>
+                                  <option
+                                    selected={
+                                      "Morning" == selectedHabit?.category
+                                    }
+                                    value="Morning"
+                                  >
+                                    Morning
+                                  </option>
+                                  <option
+                                    selected={"Work" == selectedHabit?.category}
+                                    value="Work"
+                                  >
+                                    Work
+                                  </option>
+                                  <option
+                                    selected={
+                                      "Fitness" == selectedHabit?.category
+                                    }
+                                    value="Fitness"
+                                  >
+                                    Fitness
+                                  </option>
+                                  <option
+                                    selected={
+                                      "Evening" == selectedHabit?.category
+                                    }
+                                    value="Evening"
+                                  >
+                                    Evening
+                                  </option>
+                                  <option
+                                    selected={
+                                      "Study" == selectedHabit?.category
+                                    }
+                                    value="Study"
+                                  >
+                                    Study
+                                  </option>
+                                  <option
+                                    selected={
+                                      "Playing" == selectedHabit?.category
+                                    }
+                                    value="Playing"
+                                  >
+                                    Playing
+                                  </option>
                                 </select>
                               </div>
 
@@ -318,7 +361,9 @@ const MyHabits = () => {
                                     name="isPublic"
                                     className="checkbox checkbox-primary"
                                     checked={isPublic}
-                                    onChange={(e) => setIsPublic(e.target.checked)}
+                                    onChange={(e) =>
+                                      setIsPublic(e.target.checked)
+                                    }
                                   />
                                   <span className="label-text font-medium">
                                     Make this habit Public

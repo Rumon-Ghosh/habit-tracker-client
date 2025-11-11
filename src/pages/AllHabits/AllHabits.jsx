@@ -9,15 +9,15 @@ const AllHabits = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch("http://localhost:3000/habits")
+    fetch("https://habit-tracker-server-chi.vercel.app/habits")
       .then((res) => res.json())
       .then((data) => {
         setHabits(data);
         setLoading(false);
       })
       .catch(() => {
-        toast.error("Something went wrong")
-        setLoading(false)
+        toast.error("Something went wrong");
+        setLoading(false);
       });
   }, []);
 
@@ -26,13 +26,15 @@ const AllHabits = () => {
     setLoading(true);
     const searchField = e.target.search.value;
     // console.log(searchField)
-    fetch(`http://localhost:3000/search/?search=${searchField}`)
+    fetch(
+      `https://habit-tracker-server-chi.vercel.app/search/?search=${searchField}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setHabits(data);
         setLoading(false);
       })
-      .catch(err => toast.error(err.message))
+      .catch((err) => toast.error(err.message));
   };
 
   const handleFilter = (e) => {
@@ -40,26 +42,28 @@ const AllHabits = () => {
     const filterValue = e.target.category.value;
     if (filterValue !== "All") {
       setLoading(true);
-      fetch(`http://localhost:3000/filter/?filter=${filterValue}`)
+      fetch(
+        `https://habit-tracker-server-chi.vercel.app/filter/?filter=${filterValue}`
+      )
         .then((res) => res.json())
         .then((data) => {
           setHabits(data);
           setLoading(false);
         })
         .catch(() => {
-          toast.error('Something went wrong')
-        })
-      } else {
-        setLoading(true);
-        fetch("http://localhost:3000/habits")
+          toast.error("Something went wrong");
+        });
+    } else {
+      setLoading(true);
+      fetch("https://habit-tracker-server-chi.vercel.app/habits")
         .then((res) => res.json())
         .then((data) => {
           setHabits(data);
           setLoading(false);
         })
-          .catch(() => {
-          toast.error('Something went wrong')
-        })
+        .catch(() => {
+          toast.error("Something went wrong");
+        });
     }
   };
 

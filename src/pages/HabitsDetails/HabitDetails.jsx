@@ -7,7 +7,7 @@ import { calculateProgress, calculateStreak } from "../../utils/habitUtils";
 import { AuthContext } from "../../AuthContext/AuthContext";
 
 const HabitDetails = () => {
-  const {user} = use(AuthContext)
+  const { user } = use(AuthContext);
   const [habit, setHabit] = useState({});
   const { id } = useParams();
   const [loading, setLoading] = useState(false);
@@ -17,10 +17,10 @@ const HabitDetails = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:3000/habits/${id}`, {
+    fetch(`https://habit-tracker-server-chi.vercel.app/habits/${id}`, {
       headers: {
-        authorization: `Bearer ${user?.accessToken}`
-      }
+        authorization: `Bearer ${user?.accessToken}`,
+      },
     })
       .then((res) => res.json())
       .then((data) => {
@@ -30,7 +30,7 @@ const HabitDetails = () => {
   }, [id, user, refetch]);
 
   const updateStreak = (id) => {
-    fetch(`http://localhost:3000/habits/${id}/complete`, {
+    fetch(`https://habit-tracker-server-chi.vercel.app/habits/${id}/complete`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -48,15 +48,19 @@ const HabitDetails = () => {
 
   if (loading) {
     return <LoadingSpinner></LoadingSpinner>;
-  };
+  }
 
   return (
     <div>
       <title>Habit Details</title>
       <h2 className="text-2xl md:text-3xl text-center font-bold text-purple-600 mb-4">
-        Build good habits that's will lead you to the next level.
+        Build Good Habits That's Will Lead You To The Next Level
       </h2>
-        <p className="text-center mb-4 text-lg text-gray-800 max-w-[750px] mx-auto">Habits shape who we become. By focusing on small, consistent actions, you unlock long-term growth, improved focus, reduced stress, and a more balanced lifestyle.</p>
+      <p className="text-center mb-4 text-lg text-gray-800 max-w-[750px] mx-auto">
+        Habits shape who we become. By focusing on small, consistent actions,
+        you unlock long-term growth, improved focus, reduced stress, and a more
+        balanced lifestyle.
+      </p>
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
