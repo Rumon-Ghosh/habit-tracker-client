@@ -50,10 +50,10 @@ const Navbar = () => {
             <span className="loading loading-spinner loading-5xl"></span>
           ) : !user ? (
             <div className="flex gap-1">
-              <Link className="btn" to={`/login`}>
+              <Link className="btn bg-purple-500 text-white hover:bg-purple-600" to={`/login`}>
                 LogIn
               </Link>
-              <Link className="btn hidden md:flex" to={`/register`}>
+              <Link className="btn hidden md:flex bg-purple-500 text-white hover:bg-purple-600" to={`/register`}>
                 Register
               </Link>
             </div>
@@ -70,7 +70,7 @@ const Navbar = () => {
           )}
           {user && (
             <ul
-              tabIndex="-1"
+              tabIndex="1"
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-5 w-52 p-2 shadow"
             >
               <li>
