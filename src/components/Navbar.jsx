@@ -38,13 +38,13 @@ const Navbar = () => {
           src="https://i.ibb.co/Kxwb7rqF/img-icons8.png"
           alt="logo"
         />
-        <h3 className="font-semibold text-lg text-purple-500 hidden sm:block">Habit Tracker</h3>
+        <h3 className="font-semibold text-lg text-purple-500 hidden sm:block">HabitFLow</h3>
       </Link>
       <div className="flex gap-2 md:gap-4 items-center nav">
-        <NavLink to={`/`}>Home</NavLink>
-        <NavLink to={`/all-habits`}>PublicHabits</NavLink>
-        <NavLink to={`/my-habits`}>MyHabits</NavLink>
-        <NavLink to={`/add-habit`}>AddHabit</NavLink>
+        <NavLink className="font-medium" to={`/`}>Home</NavLink>
+        <NavLink className="font-medium" to={`/all-habits`}>PublicHabits</NavLink>
+        <NavLink className="font-medium" to={`/my-habits`}>MyHabits</NavLink>
+        <NavLink className="font-medium" to={`/add-habit`}>AddHabit</NavLink>
         <div className="dropdown dropdown-end">
           {loading ? (
             <span className="loading loading-spinner loading-5xl"></span>

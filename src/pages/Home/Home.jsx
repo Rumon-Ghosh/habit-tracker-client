@@ -12,7 +12,6 @@ const Home = () => {
   // console.log(latestHabits)
   return (
     <div>
-      <title>Habit Tracker - Home</title>
       <div>
         <Banner></Banner>
         <MySlider></MySlider>

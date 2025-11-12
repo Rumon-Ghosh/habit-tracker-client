@@ -64,13 +64,13 @@ const HabitDetails = () => {
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
-        className="w-11/12 md:w-3/4 lg:w-2/3 mx-auto mt-10 shadow-lg rounded-2xl p-6 bg-white"
+        className="w-11/12 md:w-3/4 lg:w-2/3 mx-auto shadow-lg rounded-2xl p-3 md:p-6 bg-white"
       >
         <div className="w-full rounded-xl overflow-hidden shadow-md">
           <img
             src={habit?.image}
             alt={habit?.title}
-            className="w-1/2 h-[350px] rounded-2xl object-cover mx-auto"
+            className="w-full h-3/4 md:w-1/2 rounded-2xl object-cover mx-auto"
           />
         </div>
 

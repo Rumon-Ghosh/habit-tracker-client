@@ -4,10 +4,10 @@ import { FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-base-200 text-base-content mt-5 p-10">
-      <div className="w-10/12 mx-auto grid grid-cols-2 md:grid-cols-4 gap-7 md:gap-15">
+    <footer className="w-full bg-base-200 text-base-content mt-5 p-5 md:p-10">
+      <div className="w-11/12 md:w-10/12 mx-auto grid grid-cols-2 md:grid-cols-4 gap-7 md:gap-15">
         <aside className="col-span-1">
-          <p className="text-lg font-bold text-purple-500">Habit Tracker</p>
+          <p className="text-lg font-bold text-purple-500">HabitFlow</p>
           <img className="w-fit" src="https://i.ibb.co/Kxwb7rqF/img-icons8.png" alt="Logo" />
         </aside>
         <nav className="flex flex-col col-span-1">
