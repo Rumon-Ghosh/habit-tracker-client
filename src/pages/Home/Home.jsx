@@ -6,6 +6,7 @@ import FeaturedHabits from "../../components/FeaturedHabits";
 import { useLoaderData } from "react-router";
 import HabitCard from "../../components/HabitCard";
 import Banner from "../../components/Banner";
+import Newsletter from "../../components/Newsletter";
 
 const Home = () => {
   const latestHabits = useLoaderData();
@@ -25,6 +26,7 @@ const Home = () => {
         <WhyBuildHabits></WhyBuildHabits>
         <HowItWorks></HowItWorks>
         <FeaturedHabits></FeaturedHabits>
+        <Newsletter></Newsletter>
       </div>
     </div>
   );

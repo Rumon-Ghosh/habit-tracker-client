@@ -101,11 +101,17 @@ const HabitDetails = () => {
           </div>
         </div>
 
-        <div className="mt-6 p-4 bg-purple-50 rounded-xl border border-purple-200">
-          <p className="text-sm text-gray-600">Created by:</p>
-          <p className="font-bold text-purple-700 text-lg">{habit?.userName}</p>
-          <p className="text-gray-500">{habit?.userEmail}</p>
-        </div>
+        {habit.isPublic ? (
+          <div className="mt-6 p-4 bg-purple-50 rounded-xl border border-purple-200">
+            <p className="text-sm text-gray-600">Created by:</p>
+            <p className="font-bold text-purple-700 text-lg">
+              {habit?.userName}
+            </p>
+            <p className="text-gray-500">{habit?.userEmail}</p>
+          </div>
+        ) : 
+          <p className="mt-6 p-4 bg-purple-50 rounded-xl border border-purple-200 text-lg font-semibold">User Info: Private habit</p>
+        }
 
         <button
           onClick={() => updateStreak(habit?._id)}
