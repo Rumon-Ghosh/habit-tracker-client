@@ -1,6 +1,7 @@
 import React, { use } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../AuthContext/AuthContext";
+import { FaHome } from "react-icons/fa";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 
@@ -42,8 +43,8 @@ const Navbar = () => {
       </Link>
       <div className="flex gap-2 md:gap-4 items-center nav">
         <NavLink className="font-medium" to={`/`}>Home</NavLink>
-        <NavLink className="font-medium" to={`/all-habits`}>PublicHabits</NavLink>
-        <NavLink className="font-medium" to={`/my-habits`}>MyHabits</NavLink>
+        <NavLink className="font-medium" to={`/all-habits`}>Habits</NavLink>
+        <NavLink className="font-medium" to={`/my-habits`}>MyHabit</NavLink>
         <NavLink className="font-medium" to={`/add-habit`}>AddHabit</NavLink>
         <div className="dropdown dropdown-end">
           {loading ? (
