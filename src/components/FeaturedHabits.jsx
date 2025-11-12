@@ -22,7 +22,7 @@ const FeaturedHabits = () => {
   return (
     <div className="py-5 md:py-10 bg-base-200">
       <h2 className="text-4xl font-bold text-center text-purple-600 mb-3">
-        Featured Habits to Start Today
+        Newest Habit Inspirations
       </h2>
       <p className="text-center mb-10 text-base text-gray-800">Discover inspiring habits from our community and find the perfect one to start today.</p>
       <div className="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-6">
