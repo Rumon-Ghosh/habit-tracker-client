@@ -1,12 +1,13 @@
-import React, { use } from "react";
+import React, { useState, useContext } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../AuthContext/AuthContext";
-import { FaHome } from "react-icons/fa";
+import { IoMdMenu } from "react-icons/io";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 
 const Navbar = () => {
-  const { user, setUser, signOutUser, loading } = use(AuthContext);
+  const { user, setUser, signOutUser, loading } = useContext(AuthContext);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleSignOut = () => {
     Swal.fire({
@@ -23,38 +24,86 @@ const Navbar = () => {
               title: "Logged Out!",
               icon: "success",
             });
-            // toast.success("Sign Out Successful");
             setUser(null);
+            setMenuOpen(false); 
           })
           .catch((err) => toast.error(err.message));
       }
     });
   };
 
+  const handleLinkClick = () => {
+    setMenuOpen(false);
+  };
+
+  const links = (
+    <>
+      <NavLink onClick={handleLinkClick} className="font-medium" to={`/`}>
+        Home
+      </NavLink>
+      <NavLink onClick={handleLinkClick} className="font-medium" to={`/all-habits`}>
+        PublicHabits
+      </NavLink>
+      <NavLink onClick={handleLinkClick} className="font-medium" to={`/my-habits`}>
+        MyHabit
+      </NavLink>
+      <NavLink onClick={handleLinkClick} className="font-medium" to={`/add-habit`}>
+        AddHabit
+      </NavLink>
+    </>
+  );
+
   return (
     <div className="navbar bg-base-100 shadow-sm mb-8 md:mb-15 sticky top-0 z-50">
+      {/* Mobile Menu */}
+      <div className="dropdown dropdown-start md:hidden">
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="btn m-1 flex items-center"
+        >
+          <IoMdMenu size={22} />
+        </button>
+
+        {menuOpen && (
+          <ul
+            className="menu bg-base-100 rounded-box z-50 w-52 p-2 shadow-sm space-y-1 absolute top-12 left-0"
+            onClick={handleLinkClick}
+          >
+            {links}
+          </ul>
+        )}
+      </div>
+
+      {/* Logo */}
       <Link to={`/`} className="flex-1 flex items-center gap-1">
         <img
           className="w-10"
           src="https://i.ibb.co/Kxwb7rqF/img-icons8.png"
           alt="logo"
         />
-        <h3 className="font-semibold text-lg text-purple-500 hidden sm:block">HabitFLow</h3>
+        <h3 className="font-semibold text-lg text-purple-500">HabitFlow</h3>
       </Link>
+
+      {/* Desktop Links + Auth */}
       <div className="flex gap-2 md:gap-4 items-center nav">
-        <NavLink className="font-medium" to={`/`}>Home</NavLink>
-        <NavLink className="font-medium" to={`/all-habits`}>Habits</NavLink>
-        <NavLink className="font-medium" to={`/my-habits`}>MyHabit</NavLink>
-        <NavLink className="font-medium" to={`/add-habit`}>AddHabit</NavLink>
+        <div className="hidden md:flex gap-4">{links}</div>
+
+        {/* User Menu */}
         <div className="dropdown dropdown-end">
           {loading ? (
             <span className="loading loading-spinner loading-5xl"></span>
           ) : !user ? (
             <div className="flex gap-1">
-              <Link className="btn bg-purple-500 text-white hover:bg-purple-600" to={`/login`}>
+              <Link
+                className="btn bg-purple-500 text-white hover:bg-purple-600"
+                to={`/login`}
+              >
                 LogIn
               </Link>
-              <Link className="btn hidden md:flex bg-purple-500 text-white hover:bg-purple-600" to={`/register`}>
+              <Link
+                className="btn hidden md:flex bg-purple-500 text-white hover:bg-purple-600"
+                to={`/register`}
+              >
                 Register
               </Link>
             </div>
