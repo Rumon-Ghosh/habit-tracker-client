@@ -68,7 +68,7 @@ const Register = () => {
   return (
     <div className="flex justify-center items-center">
       <title>HabitFlow - Register Page</title>
-      <div className="lg:w-2/5 p-6 bg-gray-50 rounded-xl shadow-inner border border-gray-200 sticky top-4">
+      <div className="lg:w-2/5 p-6 rounded-xl shadow-inner border border-gray-200 sticky top-4">
         <h2 className="text-2xl font-bold text-indigo-700 mb-4 text-center">
           Resister to continue !
         </h2>
@@ -78,7 +78,7 @@ const Register = () => {
           <div>
             <label
               htmlFor="name"
-              className="block text-base text-gray-700 font-semibold"
+              className="block text-base font-semibold"
             >
               Your Name
             </label>
@@ -96,7 +96,7 @@ const Register = () => {
           <div>
             <label
               htmlFor="email"
-              className="block text-base text-gray-700 font-semibold"
+              className="block text-base font-semibold"
             >
               Your Email
             </label>
@@ -114,7 +114,7 @@ const Register = () => {
           <div>
             <label
               htmlFor="photo"
-              className="block text-base text-gray-700 font-semibold"
+              className="block text-base font-semibold"
             >
               Your Photo URL
             </label>
@@ -133,7 +133,7 @@ const Register = () => {
           <div className="relative">
             <label
               htmlFor="password"
-              className="block text-base text-gray-700 font-semibold"
+              className="block text-base font-semibold"
             >
               Password
             </label>
@@ -148,7 +148,7 @@ const Register = () => {
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3 top-9 text-gray-500 hover:text-primary z-10"
+              className="absolute right-3 top-9 hover:text-primary z-10"
             >
               {showPassword ? <FaEyeSlash size={18} /> : <FaEye size={18} />}
             </button>
@@ -196,8 +196,8 @@ const Register = () => {
           Login with Google
         </button>
         <p className="mt-3 text-center text-lg">
-          Already have an account !
-          <Link className="underline text-red-500" to={`/login`}>
+          Already have an account!
+          <Link className="underline text-red-500 font-bold" to={`/login`}>
             {" "}
             Login
           </Link>

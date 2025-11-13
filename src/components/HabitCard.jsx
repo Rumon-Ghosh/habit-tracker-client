@@ -36,9 +36,9 @@ const HabitCard = ({ habit }) => {
             : habit?.description}
         </p>
 
-        <div className="flex items-center gap-2 text-sm text-gray-700 mb-3">
+        <div className="flex items-center gap-2 text-sm mb-3">
           <FaUserAlt className="text-purple-500" />
-          <span>
+          <span className="text-gray-800">
             <strong>Creator:</strong>{" "}
             {habit?.isPublic ? habit?.userName : null}
           </span>
@@ -51,7 +51,7 @@ const HabitCard = ({ habit }) => {
           }
           <Link to={`/habit/${habit?._id}`}>
             <button className="btn btn-sm bg-purple-600 text-white hover:bg-purple-700">
-              View Details
+              See Details
             </button>
           </Link>
         </div>

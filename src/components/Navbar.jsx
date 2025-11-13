@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../AuthContext/AuthContext";
 import { IoMdMenu } from "react-icons/io";
@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 const Navbar = () => {
   const { user, setUser, signOutUser, loading } = useContext(AuthContext);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
   const handleSignOut = () => {
     Swal.fire({
@@ -25,7 +26,7 @@ const Navbar = () => {
               icon: "success",
             });
             setUser(null);
-            setMenuOpen(false); 
+            setMenuOpen(false);
           })
           .catch((err) => toast.error(err.message));
       }
@@ -36,18 +37,40 @@ const Navbar = () => {
     setMenuOpen(false);
   };
 
+  useEffect(() => {
+    const html = document.querySelector("html");
+    html.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const handleThemeMode = (checked) => {
+    setTheme(checked ? "dark" : "light");
+  };
+
   const links = (
     <>
       <NavLink onClick={handleLinkClick} className="font-medium" to={`/`}>
         Home
       </NavLink>
-      <NavLink onClick={handleLinkClick} className="font-medium" to={`/all-habits`}>
+      <NavLink
+        onClick={handleLinkClick}
+        className="font-medium"
+        to={`/all-habits`}
+      >
         PublicHabits
       </NavLink>
-      <NavLink onClick={handleLinkClick} className="font-medium" to={`/my-habits`}>
+      <NavLink
+        onClick={handleLinkClick}
+        className="font-medium"
+        to={`/my-habits`}
+      >
         MyHabit
       </NavLink>
-      <NavLink onClick={handleLinkClick} className="font-medium" to={`/add-habit`}>
+      <NavLink
+        onClick={handleLinkClick}
+        className="font-medium"
+        to={`/add-habit`}
+      >
         AddHabit
       </NavLink>
     </>
@@ -66,7 +89,7 @@ const Navbar = () => {
 
         {menuOpen && (
           <ul
-            className="menu bg-base-100 rounded-box z-50 w-52 p-2 shadow-sm space-y-1 absolute top-12 left-0"
+            className="menu bg-base-100 rounded-box z-50 w-52 p-2 shadow-sm space-y-2 absolute top-12 left-0"
             onClick={handleLinkClick}
           >
             {links}
@@ -130,7 +153,22 @@ const Navbar = () => {
                 <p>{user?.email}</p>
               </li>
               <li>
-                <button onClick={handleSignOut}>Sign Out</button>
+                <button
+                  className="btn bg-purple-600 text-white"
+                  onClick={handleSignOut}
+                >
+                  Sign Out
+                </button>
+              </li>
+              <li>
+                <div className="navbar">
+                  <input
+                    onChange={(e) => handleThemeMode(e.target.checked)}
+                    type="checkbox"
+                    defaultChecked={localStorage.getItem("theme") === "dark"}
+                    className="toggle"
+                  />
+                </div>
               </li>
             </ul>
           )}

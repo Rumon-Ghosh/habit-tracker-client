@@ -37,7 +37,7 @@ const Login = () => {
   return (
     <div className="flex justify-center items-center">
       <title>Login-to continue</title>
-      <div className="lg:w-2/5 p-6 bg-gray-50 rounded-xl shadow-inner border border-gray-200 sticky top-4">
+      <div className="lg:w-2/5 p-6 rounded-xl shadow-inner border border-gray-200 sticky top-4">
         <h2 className="text-2xl font-bold text-indigo-700 mb-4 text-center">
           Login to continue !
         </h2>
@@ -47,7 +47,7 @@ const Login = () => {
           <div>
             <label
               htmlFor="email"
-              className="block text-base text-gray-700 font-semibold"
+              className="block text-base font-semibold"
             >
               Your Email
             </label>
@@ -66,7 +66,7 @@ const Login = () => {
           <div className="relative">
             <label
               htmlFor="password"
-              className="block text-base text-gray-700 font-semibold"
+              className="block text-base font-semibold"
             >
               Password
             </label>
@@ -81,7 +81,7 @@ const Login = () => {
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3 top-9 text-gray-500 hover:text-primary z-10"
+              className="absolute right-3 top-9 hover:text-primary z-10"
             >
               {showPassword ? <FaEyeSlash size={18} /> : <FaEye size={18} />}
             </button>
@@ -127,7 +127,7 @@ const Login = () => {
         </button>
         <p className="mt-3 text-center text-lg">
           New to our website. Please{" "}
-          <Link className="underline text-red-500" to={`/register`}>
+          <Link className="underline text-red-500 font-bold" to={`/register`}>
             {" "}
             Register
           </Link>

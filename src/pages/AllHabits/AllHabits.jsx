@@ -78,7 +78,7 @@ const AllHabits = () => {
         <h1 className="text-3xl md:text-4xl font-bold text-purple-600">
           Browse Public Habits
         </h1>
-        <p className="text-gray-600 mt-2 w-10/12 md:w-7/12 mx-auto">
+        <p className="mt-2 w-10/12 md:w-7/12 mx-auto">
           Explore habits created by other users. Filter by category or search
           for something specific to fuel your personal growth journey.
         </p>
@@ -90,7 +90,7 @@ const AllHabits = () => {
             type="search"
             placeholder="Search habits by title..."
             name="search"
-            className="input input-bordered w-full bg-white border-purple-300 focus:border-purple-500"
+            className="input input-bordered w-full bg-white text-gray-700 border-purple-300 focus:border-purple-500"
           />
           <button className="btn bg-purple-500 text-white">Search</button>
         </form>
@@ -113,7 +113,7 @@ const AllHabits = () => {
             <option value="Study">Study</option>
             <option value="Playing">Playing</option>
           </select>
-          <button className="btn">Filter</button>
+          <button className="btn bg-purple-500 text-white">Filter</button>
         </form>
       </div>
 

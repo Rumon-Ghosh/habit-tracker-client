@@ -24,13 +24,13 @@ const FeaturedHabits = () => {
       <h2 className="text-4xl font-bold text-center text-purple-600 mb-3">
         Popular Habit Inspirations
       </h2>
-      <p className="text-center mb-10 text-base text-gray-800">Discover inspiring habits from our community and find the perfect one to start today.</p>
+      <p className="text-center mb-10 text-base">Discover inspiring habits from our community and find the perfect one to start today.</p>
       <div className="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-6">
 
         {habits.map((habit, index) => (
           <motion.div
             key={index}
-            className="card bg-white shadow-xl border border-purple-200 hover:shadow-2xl transition"
+            className="card shadow-xl border border-purple-200 hover:shadow-2xl transition"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: index * 0.2 }}
@@ -41,7 +41,7 @@ const FeaturedHabits = () => {
             </figure>
             <div className="card-body">
               <h3 className="font-bold text-xl text-purple-600">{habit.title}</h3>
-              <p className="text-gray-600 text-sm">{habit.desc}</p>
+              <p className="text-sm">{habit.desc}</p>
             </div>
           </motion.div>
         ))}

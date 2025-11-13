@@ -131,7 +131,7 @@ const AddHabit = () => {
             name="userName"
             defaultValue={user?.displayName}
             readOnly
-            className="input input-bordered bg-gray-100"
+            className="input input-bordered text-gray-500"
           />
         </div>
 
@@ -145,7 +145,7 @@ const AddHabit = () => {
             name="userEmail"
             defaultValue={user?.email}
             readOnly
-            className="input input-bordered bg-gray-100"
+            className="input input-bordered text-gray-500"
           />
         </div>
 

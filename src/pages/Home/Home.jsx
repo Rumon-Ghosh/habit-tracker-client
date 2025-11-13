@@ -4,9 +4,9 @@ import WhyBuildHabits from "../../components/WhyBuildHabits";
 import HowItWorks from "../../components/HowItWorks";
 import FeaturedHabits from "../../components/FeaturedHabits";
 import { useLoaderData } from "react-router";
-import HabitCard from "../../components/HabitCard";
 import Banner from "../../components/Banner";
 import Newsletter from "../../components/Newsletter";
+import FeatureCard from "../../components/FeatureCard";
 
 const Home = () => {
   const latestHabits = useLoaderData();
@@ -20,7 +20,7 @@ const Home = () => {
         <p className="mb-10 text-center text-lg font-medium">See what others are building today — start your journey with fresh motivation!</p>
         <div className="w-11/12 mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {latestHabits.map((habit) => (
-            <HabitCard key={habit._id} habit={habit}></HabitCard>
+            <FeatureCard key={habit._id} habit={habit}></FeatureCard>
           ))}
         </div>
         <WhyBuildHabits></WhyBuildHabits>

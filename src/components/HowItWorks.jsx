@@ -7,7 +7,7 @@ const HowItWorks = () => {
       <h2 className="text-4xl font-bold text-center text-purple-600 mb-3">
         How It Works
       </h2>
-      <p className="text-center mb-8 text-base text-gray-800">Create habits, track your progress, and stay motivated with simple, easy-to-follow steps.</p>
+      <p className="text-center mb-8 text-gray-800">Create habits, track your progress, and stay motivated with simple, easy-to-follow steps.</p>
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-6">
 
         {/* Step 1 */}
@@ -20,7 +20,7 @@ const HowItWorks = () => {
         >
           <FaPlusCircle className="text-5xl text-purple-500 mx-auto mb-4" />
           <h3 className="text-xl font-bold text-purple-600 mb-2">1. Add a Habit</h3>
-          <p className="text-gray-600">
+          <p>
             Create a new habit with title, reminder time, category, and other useful details.
           </p>
         </motion.div>
@@ -35,7 +35,7 @@ const HowItWorks = () => {
         >
           <FaBell className="text-5xl text-purple-500 mx-auto mb-4" />
           <h3 className="text-xl font-bold text-purple-600 mb-2">2. Get Reminders</h3>
-          <p className="text-gray-600">
+          <p>
             Stay consistent with automated reminders that keep you on track every day.
           </p>
         </motion.div>
@@ -50,7 +50,7 @@ const HowItWorks = () => {
         >
           <FaChartPie className="text-5xl text-purple-500 mx-auto mb-4" />
           <h3 className="text-xl font-bold text-purple-600 mb-2">3. Track Your Progress</h3>
-          <p className="text-gray-600">
+          <p>
             See streaks, charts, and milestones that motivate you to build better habits.
           </p>
         </motion.div>

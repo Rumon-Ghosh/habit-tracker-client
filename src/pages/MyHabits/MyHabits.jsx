@@ -160,7 +160,7 @@ const MyHabits = () => {
             <tbody>
               {myHabits.length > 0 ? (
                 myHabits.map((habit) => (
-                  <tr key={habit?._id} className="hover:bg-purple-50">
+                  <tr key={habit?._id}>
                     <td className="font-semibold text-purple-600">
                       {habit?.title}
                     </td>
@@ -333,7 +333,7 @@ const MyHabits = () => {
                                   name="userName"
                                   defaultValue={user?.displayName}
                                   readOnly
-                                  className="input input-bordered bg-gray-100"
+                                  className="input input-bordered"
                                 />
                               </div>
 
@@ -349,7 +349,7 @@ const MyHabits = () => {
                                   name="userEmail"
                                   defaultValue={user?.email}
                                   readOnly
-                                  className="input input-bordered bg-gray-100"
+                                  className="input input-bordered"
                                 />
                               </div>
 

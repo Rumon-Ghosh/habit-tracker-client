@@ -27,7 +27,7 @@ const Banner = () => {
           </span>
         </h1>
 
-        <p className="text-gray-600 mt-4 text-lg text-center md:text-start">
+        <p className="mt-4 text-lg text-center md:text-start">
           Turn small steps into big results. Track your progress, stay motivated,
           and become the best version of yourself—one habit at a time.
         </p>

@@ -5,10 +5,10 @@ const ErrorPage = () => {
     <div className="flex flex-col items-center justify-center min-h-screen bg-base-200 text-center px-6">
       <title>Error</title>
       <h1 className="text-9xl font-extrabold text-error drop-shadow-lg">404</h1>
-      <h2 className="text-3xl font-bold text-gray-700 mt-2">
+      <h2 className="text-3xl font-bold mt-2">
         Oops! Page Not Found
       </h2>
-      <p className="text-gray-500 mt-3 max-w-md">
+      <p className="mt-3 max-w-md">
         The page you’re looking for doesn’t exist or might have been moved.
       </p>
       <div className="mt-8 animate-float">

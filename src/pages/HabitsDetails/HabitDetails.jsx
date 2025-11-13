@@ -56,7 +56,7 @@ const HabitDetails = () => {
       <h2 className="text-2xl md:text-3xl text-center font-bold text-purple-600 mb-4">
         Build Good Habits That's Will Lead You To The Next Level
       </h2>
-      <p className="text-center mb-4 text-lg text-gray-800 max-w-[750px] mx-auto">
+      <p className="text-center mb-4 text-lg max-w-[750px] mx-auto">
         Habits shape who we become. By focusing on small, consistent actions,
         you unlock long-term growth, improved focus, reduced stress, and a more
         balanced lifestyle.
@@ -64,7 +64,7 @@ const HabitDetails = () => {
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
-        className="w-11/12 md:w-3/4 lg:w-2/3 mx-auto shadow-lg rounded-2xl p-3 md:p-6 bg-white"
+        className="w-11/12 md:w-3/4 lg:w-2/3 mx-auto shadow-lg rounded-2xl p-3 md:p-6"
       >
         <div className="w-full rounded-xl overflow-hidden shadow-md">
           <img
@@ -77,9 +77,10 @@ const HabitDetails = () => {
         <h1 className="text-3xl font-bold mt-4 text-purple-700">
           {habit.title}
         </h1>
-        <p className="text-md text-gray-600 mt-2">{habit?.description}</p>
+        <p className="text-md mt-2 ">{habit?.description}</p>
 
-        <span className="inline-block mt-3 px-4 py-1 bg-purple-100 text-purple-700 rounded-full font-semibold">
+        <span className="mt-3 bg-base-200 p-2 rounded-md font-semibold flex items-center gap-2">
+          <span className="text-lg font-bold">Category:</span>
           {habit?.category}
         </span>
         <div className="mt-4 flex items-center gap-2">
@@ -88,8 +89,8 @@ const HabitDetails = () => {
             {streak}-day streak
           </span>
         </div>
-        <div className="mt-6">
-          <p className="font-semibold text-gray-700 mb-1">
+        <div className="mt-4">
+          <p className="font-semibold mb-1">
             30-Day Progress: {progress}%
           </p>
 
@@ -102,15 +103,15 @@ const HabitDetails = () => {
         </div>
 
         {habit.isPublic ? (
-          <div className="mt-6 p-4 bg-purple-50 rounded-xl border border-purple-200">
-            <p className="text-sm text-gray-600">Created by:</p>
+          <div className="mt-4 p-2 rounded-xl border border-purple-200">
+            <p className="text-sm">Created by:</p>
             <p className="font-bold text-purple-700 text-lg">
               {habit?.userName}
             </p>
-            <p className="text-gray-500">{habit?.userEmail}</p>
+            <p>{habit?.userEmail}</p>
           </div>
         ) : 
-          <p className="mt-6 p-4 bg-purple-50 rounded-xl border border-purple-200 text-lg font-semibold">User Info: Private habit</p>
+          <p className="mt-6 p-4 rounded-xl border border-purple-200 text-lg font-semibold text-bg-">User Info: Private habit</p>
         }
 
         <button
