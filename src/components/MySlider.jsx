@@ -16,7 +16,7 @@ import "swiper/css/scrollbar";
 const MySlider = () => {
   return (
     <Swiper
-      className="mb-12 md:mb-20"
+      className="my-12 md:my-20"
       modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
       spaceBetween={50}
       slidesPerView={1}
@@ -24,13 +24,13 @@ const MySlider = () => {
       scrollbar={{ draggable: true }}
       // navigation
       autoplay={{
-        delay: 4000,
+        delay: 5000,
         disableOnInteraction: false,
       }}
     >
       {/* Slide 1 */}
       <SwiperSlide>
-        <div className="card bg-base-100 image-full mx-auto w-11/12 h-[300px] shadow-sm">
+        <div className="card bg-base-100 image-full mx-auto w-11/12 h-[300px] md:h-[400px] shadow-sm">
           <figure>
             <img
               className="w-full object-cover"
@@ -39,8 +39,8 @@ const MySlider = () => {
             />
           </figure>
           <div className="card-body">
-            <h2 className="card-title text-white">Build Habits That Last</h2>
-            <p className="text-white">
+            <h2 className="card-title text-white font-semibold text-4xl">Build Habits That Last</h2>
+            <p className="text-white font-semibold text-lg">
               Track your daily progress and stay consistent with powerful habit-building tools designed for success.
             </p>
           </div>
@@ -49,7 +49,7 @@ const MySlider = () => {
 
       {/* Slide 2 */}
       <SwiperSlide>
-        <div className="card bg-base-100 image-full px-2 md:px-10 w-full h-[300px] shadow-sm">
+        <div className="card bg-base-100 image-full px-2 md:px-10 w-full h-[300px] md:h-[400px] shadow-sm">
           <figure>
             <img
               className="w-full object-cover"
@@ -58,8 +58,8 @@ const MySlider = () => {
             />
           </figure>
           <div className="card-body">
-            <h2 className="card-title text-white">Stay Motivated Every Day</h2>
-            <p className="text-white">
+            <h2 className="card-title text-white font-semibold text-4xl">Stay Motivated Every Day</h2>
+            <p className="text-white font-semibold text-lg">
               Watch your streaks grow and get motivated to complete your daily goals with reminders and progress tracking.
             </p>
           </div>
@@ -68,7 +68,7 @@ const MySlider = () => {
 
       {/* Slide 3 */}
       <SwiperSlide>
-        <div className="card bg-base-100 image-full px-2 md:px-10 w-full h-[300px] shadow-sm">
+        <div className="card bg-base-100 image-full px-2 md:px-10 w-full h-[300px] md:h-[400px] shadow-sm">
           <figure>
             <img
               className="w-full object-cover"
@@ -77,8 +77,8 @@ const MySlider = () => {
             />
           </figure>
           <div className="card-body">
-            <h2 className="card-title text-white">Organize Your Life</h2>
-            <p className="text-white">
+            <h2 className="card-title text-white font-semibold text-4xl">Organize Your Life</h2>
+            <p className="text-white font-semibold text-lg">
               Set clear goals, break them into daily habits, and track your growth with beautiful analytics.
             </p>
           </div>
@@ -87,7 +87,7 @@ const MySlider = () => {
 
       {/* Slide 4 */}
       <SwiperSlide>
-        <div className="card bg-base-100 image-full px-2 md:px-10 w-full h-[300px] shadow-sm">
+        <div className="card bg-base-100 image-full px-2 md:px-10 w-full h-[300px] md:h-[400px] shadow-sm">
           <figure>
             <img
               className="w-full object-cover"
@@ -96,8 +96,8 @@ const MySlider = () => {
             />
           </figure>
           <div className="card-body">
-            <h2 className="card-title text-white">Achieve Your Best Self</h2>
-            <p className="text-white">
+            <h2 className="card-title text-white font-semibold text-4xl">Achieve Your Best Self</h2>
+            <p className="text-white font-semibold text-lg">
               Small actions every day create big results. Start your journey toward a disciplined and productive lifestyle.
             </p>
           </div>

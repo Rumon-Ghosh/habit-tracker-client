@@ -3,11 +3,11 @@ import { FaPlusCircle, FaBell, FaChartPie } from "react-icons/fa";
 
 const HowItWorks = () => {
   return (
-    <div className="py-8 md:py-16 bg-white">
-      <h2 className="text-4xl font-bold text-center text-purple-600 mb-3">
+    <div className="py-8 md:py-16">
+      <h2 className="text-4xl font-bold text-center mb-3">
         How It Works
       </h2>
-      <p className="text-center mb-8 text-gray-800">Create habits, track your progress, and stay motivated with simple, easy-to-follow steps.</p>
+      <p className="text-center mb-8">Create habits, track your progress, and stay motivated with simple, easy-to-follow steps.</p>
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-6">
 
         {/* Step 1 */}

@@ -57,22 +57,33 @@ const Navbar = () => {
         className="font-medium"
         to={`/all-habits`}
       >
-        PublicHabits
+        Public-Habits
       </NavLink>
       <NavLink
         onClick={handleLinkClick}
         className="font-medium"
-        to={`/my-habits`}
+        to={`/support`}
       >
-        MyHabit
+        Support
       </NavLink>
-      <NavLink
-        onClick={handleLinkClick}
-        className="font-medium"
-        to={`/add-habit`}
-      >
-        AddHabit
-      </NavLink>
+      {user && (
+        <>
+          <NavLink
+            onClick={handleLinkClick}
+            className="font-medium"
+            to={`/my-habits`}
+          >
+            My-Habit
+          </NavLink>
+          <NavLink
+            onClick={handleLinkClick}
+            className="font-medium"
+            to={`/dashboard`}
+          >
+            Dashboard
+          </NavLink>
+        </>
+      )}
     </>
   );
 
@@ -104,7 +115,7 @@ const Navbar = () => {
           src="https://i.ibb.co/Kxwb7rqF/img-icons8.png"
           alt="logo"
         />
-        <h3 className="font-semibold text-lg text-purple-500">HabitFlow</h3>
+        <h3 className="font-bold text-lg text-purple-500">HabitFlow</h3>
       </Link>
 
       {/* Desktop Links + Auth */}

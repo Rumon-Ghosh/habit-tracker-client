@@ -27,7 +27,7 @@ const MyHabits = () => {
   useEffect(() => {
     setLoading(true);
     fetch(
-      `https://habit-tracker-server-chi.vercel.app/my-habits/?email=${user.email}`,
+      `${import.meta.env.VITE_API_URL}/my-habits/?email=${user.email}`,
       {
         headers: {
           authorization: `Bearer ${user?.accessToken}`,
@@ -58,7 +58,7 @@ const MyHabits = () => {
       isPublic: isPublic,
     };
 
-    fetch(`https://habit-tracker-server-chi.vercel.app/habits/${id}`, {
+    fetch(`${import.meta.env.VITE_API_URL}/habits/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -77,7 +77,7 @@ const MyHabits = () => {
   };
 
   const updateStreak = (id) => {
-    fetch(`https://habit-tracker-server-chi.vercel.app/habits/${id}/complete`, {
+    fetch(`${import.meta.env.VITE_API_URL}/habits/${id}/complete`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -105,7 +105,7 @@ const MyHabits = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://habit-tracker-server-chi.vercel.app/habits/${id}`, {
+        fetch(`${import.meta.env.VITE_API_URL}/habits/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

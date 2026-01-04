@@ -46,7 +46,7 @@ const Banner = () => {
         <img
           src="https://i.ibb.co/WW81NNLT/create-good-habits-text-red-underline-light-blue-background-69917306.webp"
           alt="Habit Illustration"
-          className="w-full md:max-w-md rounded-2xl shadow-lg"
+          className="w-full md:max-w-lg rounded-2xl shadow-lg"
         />
       </motion.div>
 

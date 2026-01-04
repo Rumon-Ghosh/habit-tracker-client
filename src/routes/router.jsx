@@ -10,6 +10,13 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import LoadingSpinner from "../components/LoadingSpinner";
 import HabitDetails from "../pages/HabitsDetails/HabitDetails";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import Support from "../pages/Support/Support";
+import DashboardLayout from "../layouts/DashboardLayout";
+import TermsOfUse from "../pages/Terms/TermsOfUse";
+import PrivacyPolicy from "../pages/Policy/PrivacyPolicy";
+import CookiePolicy from "../pages/CookiePolicy/CookiePolicy";
+import DashboardHome from "../pages/DashboardHome/DashboardHome";
+import MyProfile from "../pages/MyProfile/MyProfile";
 
 export const router = createBrowserRouter([
   {
@@ -19,8 +26,7 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <Home></Home>,
-        loader: () =>
-          fetch("https://habit-tracker-server-chi.vercel.app/latest-habits"),
+        loader: () => fetch(`${import.meta.env.VITE_API_URL}/latest-habits`),
         hydrateFallbackElement: <LoadingSpinner></LoadingSpinner>,
       },
       {
@@ -28,12 +34,24 @@ export const router = createBrowserRouter([
         element: <AllHabits></AllHabits>,
       },
       {
+        path: "/support",
+        element: <Support></Support>,
+      },
+      {
+        path: "/terms",
+        element: <TermsOfUse></TermsOfUse>,
+      },
+      {
+        path: "/privacy-policy",
+        element: <PrivacyPolicy></PrivacyPolicy>,
+      },
+      {
+        path: "/cookie",
+        element: <CookiePolicy></CookiePolicy>,
+      },
+      {
         path: "/habit/:id",
-        element: (
-          <PrivateRoute>
-            <HabitDetails></HabitDetails>
-          </PrivateRoute>
-        ),
+        element: <HabitDetails></HabitDetails>,
       },
       {
         path: "/my-habits",
@@ -59,6 +77,40 @@ export const router = createBrowserRouter([
         path: "/register",
         element: <Register></Register>,
       },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: <DashboardLayout></DashboardLayout>,
+    children: [
+      {
+        index: true,
+        element: <DashboardHome></DashboardHome>,
+      },
+      {
+        path: "my-habits",
+        element: (
+          <PrivateRoute>
+            <MyHabits></MyHabits>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "add-habit",
+        element: (
+          <PrivateRoute>
+            <AddHabit></AddHabit>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "my-profile",
+        element: (
+          <PrivateRoute>
+            <MyProfile></MyProfile>
+          </PrivateRoute>
+        ),
+      }
     ],
   },
   {

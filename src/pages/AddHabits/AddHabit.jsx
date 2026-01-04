@@ -22,7 +22,7 @@ const AddHabit = () => {
       isPublic: isPublicRef.current.checked,
     };
     // console.log(newHabit)
-    fetch("https://habit-tracker-server-chi.vercel.app/habits", {
+    fetch(`${import.meta.env.VITE_API_URL}/habits`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -83,6 +83,7 @@ const AddHabit = () => {
             name="image"
             placeholder="https://ibb.co/your-image"
             className="input input-bordered w-full"
+            required
           />
         </div>
 

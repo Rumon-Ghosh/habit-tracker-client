@@ -7,6 +7,8 @@ import toast from "react-hot-toast";
 const Login = () => {
   const {googleLogIn, passwordLogIn} = use(AuthContext)
   const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -14,8 +16,6 @@ const Login = () => {
 
   const handlePasswordLogIn = (e) => {
     e.preventDefault();
-    const email = e.target.email.value;
-    const password = e.target.password.value;
     passwordLogIn(email, password)
       .then(() => {
         navigate(from, {replace: true})
@@ -23,6 +23,8 @@ const Login = () => {
       })
     .catch(err => toast.error(err.message))
   }
+
+
 
 
   const handleGoogleLogIn = () => {
@@ -34,6 +36,12 @@ const Login = () => {
       .catch(err => toast.error(err.message))
   }
 
+  const handleAutoFill = () => {
+    setEmail("user@gmail.com")
+    setPassword("User12")
+    toast.success("Demo credentials filled!");
+  }
+
   return (
     <div className="flex justify-center items-center">
       <title>Login-to continue</title>
@@ -41,6 +49,10 @@ const Login = () => {
         <h2 className="text-2xl font-bold text-indigo-700 mb-4 text-center">
           Login to continue !
         </h2>
+
+        <button
+          onClick={handleAutoFill}
+          className="btn btn-accent my-5">Use Demo Account</button>
 
         <form onSubmit={handlePasswordLogIn} className="space-y-4">
           {/* Email Input */}
@@ -54,7 +66,8 @@ const Login = () => {
             <input
               type="email"
               id="email"
-              name="email"
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
               required
               placeholder="Enter your email"
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
@@ -73,7 +86,8 @@ const Login = () => {
             <input
               type={showPassword ? "text" : "password"}
               id="password"
-              name="password"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
               required
               placeholder="Enter Password"
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 pr-10"

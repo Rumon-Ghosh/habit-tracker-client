@@ -7,5 +7,5 @@
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 .nav a.active {
-  @apply bg-purple-400 text-white font-medium rounded-md px-2 py-1;
+  @apply bg-green-400 text-white font-medium rounded-md px-2 py-1;
 }

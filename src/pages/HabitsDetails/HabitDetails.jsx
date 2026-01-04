@@ -1,5 +1,5 @@
 import React, { use, useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { motion } from "framer-motion";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import toast from "react-hot-toast";
@@ -9,6 +9,7 @@ import { AuthContext } from "../../AuthContext/AuthContext";
 const HabitDetails = () => {
   const { user } = use(AuthContext);
   const [habit, setHabit] = useState({});
+  const navigate = useNavigate();
   const { id } = useParams();
   const [loading, setLoading] = useState(false);
   const [refetch, setRefetch] = useState(false);
@@ -17,7 +18,7 @@ const HabitDetails = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`https://habit-tracker-server-chi.vercel.app/habits/${id}`, {
+    fetch(`${import.meta.env.VITE_API_URL}/habits/${id}`, {
       headers: {
         authorization: `Bearer ${user?.accessToken}`,
       },
@@ -30,8 +31,15 @@ const HabitDetails = () => {
   }, [id, user, refetch]);
 
   const updateStreak = (id) => {
-    fetch(`https://habit-tracker-server-chi.vercel.app/habits/${id}/complete`, {
+    if (!user) {
+      navigate("/login");
+      return;
+    }
+    fetch(`${import.meta.env.VITE_API_URL}/habits/${id}/complete`, {
       method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      }
     })
       .then((res) => res.json())
       .then((data) => {
@@ -90,9 +98,7 @@ const HabitDetails = () => {
           </span>
         </div>
         <div className="mt-4">
-          <p className="font-semibold mb-1">
-            30-Day Progress: {progress}%
-          </p>
+          <p className="font-semibold mb-1">30-Day Progress: {progress}%</p>
 
           <div className="w-full bg-gray-200 h-3 rounded-full overflow-hidden">
             <div
@@ -110,9 +116,11 @@ const HabitDetails = () => {
             </p>
             <p>{habit?.userEmail}</p>
           </div>
-        ) : 
-          <p className="mt-6 p-4 rounded-xl border border-purple-200 text-lg font-semibold text-bg-">User Info: Private habit</p>
-        }
+        ) : (
+          <p className="mt-6 p-4 rounded-xl border border-purple-200 text-lg font-semibold text-bg-">
+            User Info: Private habit
+          </p>
+        )}
 
         <button
           onClick={() => updateStreak(habit?._id)}
