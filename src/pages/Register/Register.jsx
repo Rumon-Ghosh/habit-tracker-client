@@ -70,7 +70,7 @@ const Register = () => {
       <title>HabitFlow - Register Page</title>
       <div className="lg:w-2/5 p-6 rounded-xl shadow-inner border border-gray-200 sticky top-4">
         <h2 className="text-2xl font-bold text-indigo-700 mb-4 text-center">
-          Resister to continue !
+          Welcome To HabitFlow!
         </h2>
 
         <form onSubmit={handlePasswordRegistration} className="space-y-4">
@@ -197,7 +197,7 @@ const Register = () => {
         </button>
         <p className="mt-3 text-center text-lg">
           Already have an account!
-          <Link className="underline text-red-500 font-bold" to={`/login`}>
+          <Link className="text-red-500 font-bold" to={`/login`}>
             {" "}
             Login
           </Link>

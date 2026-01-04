@@ -141,7 +141,7 @@ const Login = () => {
         </button>
         <p className="mt-3 text-center text-lg">
           New to our website. Please{" "}
-          <Link className="underline text-red-500 font-bold" to={`/register`}>
+          <Link className="text-red-500 font-bold" to={`/register`}>
             {" "}
             Register
           </Link>

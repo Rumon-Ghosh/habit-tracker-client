@@ -1,4 +1,4 @@
-import React, { use } from "react";
+import React, { use, useEffect, useState } from "react";
 import { Link, Outlet } from "react-router";
 import { IoMdAddCircle } from "react-icons/io";
 import { TbIrregularPolyhedron } from "react-icons/tb";
@@ -11,6 +11,14 @@ import { GoSignOut } from "react-icons/go";
 
 const DashboardLayout = () => {
   const { signOutUser, setUser } = use(AuthContext);
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+
+useEffect(() => {
+    const html = document.querySelector("html");
+    html.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+  
 
    const handleSignOut = () => {
     Swal.fire({

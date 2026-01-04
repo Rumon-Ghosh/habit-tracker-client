@@ -85,7 +85,9 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <DashboardHome></DashboardHome>,
+        element: <PrivateRoute>
+                    <DashboardHome></DashboardHome>
+                  </PrivateRoute>,
       },
       {
         path: "my-habits",
