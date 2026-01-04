@@ -1,153 +1,142 @@
-import { Link, replace, useLocation, useNavigate } from "react-router";
-import { use, useState } from "react";
+import { useContext, useState } from "react";
+import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { AuthContext } from "../../AuthContext/AuthContext";
+import { Link, useLocation, useNavigate } from "react-router";
 import toast from "react-hot-toast";
+import { AuthContext } from "../../AuthContext/AuthContext";
 
 const Login = () => {
-  const {googleLogIn, passwordLogIn} = use(AuthContext)
+  const { googleLogIn, passwordLogIn } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const location = useLocation();
+
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
-  const from = location.state?.from?.pathname || '/';
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors, isSubmitting },
+  } = useForm();
 
-  const handlePasswordLogIn = (e) => {
-    e.preventDefault();
-    passwordLogIn(email, password)
-      .then(() => {
-        navigate(from, {replace: true})
-        toast.success('LogIn Successful')
-      })
-    .catch(err => toast.error(err.message))
-  }
-
-
-
+  const onSubmit = async (data) => {
+    try {
+      await passwordLogIn(data.email, data.password);
+      toast.success("Login Successful");
+      navigate(from, { replace: true });
+    } catch (err) {
+      toast.error(err.message);
+    }
+  };
 
   const handleGoogleLogIn = () => {
     googleLogIn()
       .then(() => {
-        toast.success('LogIn Success')
-        navigate(from, {replace: true})
+        toast.success("Login Successful");
+        navigate(from, { replace: true });
       })
-      .catch(err => toast.error(err.message))
-  }
+      .catch((err) => toast.error(err.message));
+  };
 
   const handleAutoFill = () => {
-    setEmail("user@gmail.com")
-    setPassword("User12")
-    toast.success("Demo credentials filled!");
-  }
+    setValue("email", "user@gmail.com");
+    setValue("password", "User12");
+    toast.success("Demo credentials filled");
+  };
 
   return (
-    <div className="flex justify-center items-center">
-      <title>Login-to continue</title>
-      <div className="lg:w-2/5 p-6 rounded-xl shadow-inner border border-gray-200 sticky top-4">
-        <h2 className="text-2xl font-bold text-indigo-700 mb-4 text-center">
-          Login to continue !
+    <section className="min-h-screen flex items-center justify-center bg-base-200">
+      <div className="w-full max-w-md bg-base-100 shadow-xl rounded-xl p-8">
+        <h2 className="text-3xl font-bold text-center text-primary mb-6">
+          Login to Continue
         </h2>
 
         <button
           onClick={handleAutoFill}
-          className="btn btn-accent my-5">Use Demo Account</button>
+          className="btn btn-accent w-full mb-4"
+        >
+          Use Demo Account
+        </button>
 
-        <form onSubmit={handlePasswordLogIn} className="space-y-4">
-          {/* Email Input */}
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          {/* Email */}
           <div>
-            <label
-              htmlFor="email"
-              className="block text-base font-semibold"
-            >
-              Your Email
-            </label>
+            <label className="label font-semibold">Email</label>
             <input
               type="email"
-              id="email"
-              onChange={(e) => setEmail(e.target.value)}
-              value={email}
-              required
+              className="input input-bordered w-full"
               placeholder="Enter your email"
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+              {...register("email", {
+                required: "Email is required",
+                pattern: {
+                  value: /^\S+@\S+$/i,
+                  message: "Invalid email address",
+                },
+              })}
             />
+            {errors.email && (
+              <p className="text-error text-sm mt-1">
+                {errors.email.message}
+              </p>
+            )}
           </div>
 
-          {/* password */}
-
+          {/* Password */}
           <div className="relative">
-            <label
-              htmlFor="password"
-              className="block text-base font-semibold"
-            >
-              Password
-            </label>
+            <label className="label font-semibold">Password</label>
             <input
               type={showPassword ? "text" : "password"}
-              id="password"
-              onChange={(e) => setPassword(e.target.value)}
-              value={password}
-              required
-              placeholder="Enter Password"
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 pr-10"
+              className="input input-bordered w-full pr-10"
+              placeholder="Enter password"
+              {...register("password", {
+                required: "Password is required",
+                minLength: {
+                  value: 6,
+                  message: "Password must be at least 6 characters",
+                },
+              })}
             />
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3 top-9 hover:text-primary z-10"
+              className="absolute right-3 top-10 text-gray-500"
             >
-              {showPassword ? <FaEyeSlash size={18} /> : <FaEye size={18} />}
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
             </button>
+            {errors.password && (
+              <p className="text-error text-sm mt-1">
+                {errors.password.message}
+              </p>
+            )}
           </div>
 
-          {/* login button */}
+          {/* Submit */}
           <button
             type="submit"
-            className="w-full py-3 mt-4 bg-purple-600 text-white font-bold text-lg rounded-md hover:bg-purple-700 transition duration-150 ease-in-out shadow-md"
+            disabled={isSubmitting}
+            className="btn btn-primary w-full mt-4"
           >
-            Login
+            {isSubmitting ? "Logging in..." : "Login"}
           </button>
         </form>
-        <button onClick={handleGoogleLogIn} className="btn w-full mt-5 bg-[#454545] text-white py-6 border-[#e5e5e5]">
-          <svg
-            aria-label="Google logo"
-            width="16"
-            height="16"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 512 512"
-          >
-            <g>
-              <path d="m0 0H512V512H0" fill="#fff"></path>
-              <path
-                fill="#34a853"
-                d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"
-              ></path>
-              <path
-                fill="#4285f4"
-                d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"
-              ></path>
-              <path
-                fill="#fbbc02"
-                d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"
-              ></path>
-              <path
-                fill="#ea4335"
-                d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"
-              ></path>
-            </g>
-          </svg>
+
+        {/* Google Login */}
+        <button
+          onClick={handleGoogleLogIn}
+          className="btn btn-outline w-full mt-4"
+        >
           Login with Google
         </button>
-        <p className="mt-3 text-center text-lg">
-          New to our website. Please{" "}
-          <Link className="text-red-500 font-bold" to={`/register`}>
-            {" "}
+
+        <p className="text-center mt-4">
+          New to our website?
+          <Link to="/register" className="text-primary font-semibold ml-1">
             Register
           </Link>
         </p>
       </div>
-    </div>
+    </section>
   );
 };
 
