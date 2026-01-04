@@ -98,7 +98,7 @@ const AllHabits = () => {
       <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-8">
         <div>
           {/* search form */}
-          <form onSubmit={handleSearch} className="flex gap-2">
+          <form onSubmit={handleSearch} className="flex gap-0.5">
             <input
               type="search"
               placeholder="Search habits by title..."
@@ -109,7 +109,7 @@ const AllHabits = () => {
           </form>
         </div>
 
-        <div className="flex gap-2 flex-col md:flex-row">
+        <div className="flex gap-4 flex-col md:flex-row">
           {/* Sort Form */}
           <form className="w-48">
             <select
@@ -123,7 +123,7 @@ const AllHabits = () => {
           </form>
 
           {/* filter form */}
-          <form onSubmit={handleFilter} className="flex gap-2">
+          <form onSubmit={handleFilter} className="flex gap-0.5">
             <select
               name="category"
               className="select select-bordered w-36"
